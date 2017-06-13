@@ -6,7 +6,7 @@ package org.myorg.quickstart;
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may ob34tain a copy of the License at
  *
  *    http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -41,14 +41,7 @@ public class job {
 		properties.setProperty("zookeeper.connect", "34.203.160.240:2181");
 		properties.setProperty("group.id", "test");
 		DataStream<String> stream = env.addSource(new FlinkKafkaConsumer010<>("test", new SimpleStringSchema(), properties));
-		stream.map(new MapFunction<String, String>() {
-			private static final long serialVersionUID = -6867736771747690202L;
-
-			@Override
-			public String map(String value) throws Exception {
-				return "Stream Value: " + value;
-			}
-		}).print();
+		stream.print();
 		// execute program
 		env.execute("Java WordCount from SocketTextStream Example");
 	}
