@@ -17,6 +17,7 @@ package org.myorg.quickstart;
  * limitations under the License.
  */
 
+import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
@@ -40,7 +41,14 @@ public class job {
 		properties.setProperty("zookeeper.connect", "34.203.160.240:2181");
 		properties.setProperty("group.id", "test");
 		DataStream<String> stream = env.addSource(new FlinkKafkaConsumer010<>("test", new SimpleStringSchema(), properties));
-		stream.print();
+		stream.map(new MapFunction<String, String>() {
+			private static final long serialVersionUID = -6867736771747690202L;
+
+			@Override
+			public String map(String value) throws Exception {
+				return "Stream Value: " + value;
+			}
+		}).print();
 		// execute program
 		env.execute("Java WordCount from SocketTextStream Example");
 	}
