@@ -9,6 +9,8 @@ organization := "org.example"
 
 scalaVersion in ThisBuild := "2.11.7"
 
+fork in run := true
+
 val flinkVersion = "1.3.0"
 
 val flinkDependencies = Seq(
