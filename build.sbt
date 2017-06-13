@@ -26,6 +26,11 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= flinkDependencies
   )
 
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}
+
 mainClass in Compile := Some("org.example.Job")
 
 // make run command include the provided dependencies
