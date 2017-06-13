@@ -19,7 +19,7 @@ package org.myorg.quickstart;
 
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer08;
 import org.apache.flink.streaming.util.serialization.SimpleStringSchema;
 import java.util.Properties;
 
@@ -39,7 +39,7 @@ public class job {
 		// only required for Kafka 0.8
 		properties.setProperty("zookeeper.connect", "34.203.160.240:2181");
 		properties.setProperty("group.id", "test");
-		DataStream<String> stream = env.addSource(new FlinkKafkaConsumer010<>("test", new SimpleStringSchema(), properties));
+		DataStream<String> stream = env.addSource(new FlinkKafkaConsumer08<>("test", new SimpleStringSchema(), properties));
 		stream.print();
 		// execute program
 		env.execute("Java WordCount from SocketTextStream Example");
