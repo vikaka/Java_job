@@ -334,8 +334,8 @@ under the License.
 								<!-- For Kafka API classes -->
 								<artifactItem>
 									<groupId>org.apache.kafka</groupId>
-									<artifactId>kafka_2.10</artifactId>
-									<version>0.10.2</version>
+									<artifactId>kafka-clients</artifactId>
+									<version>0.10.2.1</version>
 									<type>jar</type>
 									<overWrite>false</overWrite>
 									<outputDirectory>${project.build.directory}/classes</outputDirectory>
